@@ -132,7 +132,6 @@
     <ClInclude Include="Defines\Enums.h" />
     <ClInclude Include="Defines\PipelineStateDefines.h" />
     <ClInclude Include="Defines\Structs.h" />
-    <ClInclude Include="DirectionalLightEntity.h" />
     <ClInclude Include="Entity\CameraEntity.h" />
     <ClInclude Include="Entity\DirectionalLightEntity.h" />
     <ClInclude Include="Entity\Entity.h" />
@@ -144,7 +143,6 @@
     <ClInclude Include="Library\RenderingLibrary.h" />
     <ClInclude Include="Manager\InputManager.h" />
     <ClInclude Include="Manager\ResourceManager.h" />
-    <ClInclude Include="PointLightEntity.h" />
     <ClInclude Include="Renderer\ConstantBuffer.h" />
     <ClInclude Include="Renderer\IndexBuffer.h" />
     <ClInclude Include="Renderer\PipelineStateObject.h" />
@@ -156,8 +154,6 @@
     <ClInclude Include="Resource\Texture\Texture.h" />
     <ClInclude Include="Resource\Texture\Texture2D.h" />
     <ClInclude Include="Resource\Texture\TextureCube.h" />
-    <ClInclude Include="SphereLightEntity.h" />
-    <ClInclude Include="SpotLightEntity.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application\GameApplication.cpp" />
@@ -167,6 +163,7 @@
     <ClCompile Include="Entity\Entity.cpp" />
     <ClCompile Include="Entity\LightEntity.cpp" />
     <ClCompile Include="Entity\MeshEntity.cpp" />
+    <ClCompile Include="Entity\PointLightEntity.cpp" />
     <ClCompile Include="Entity\SpotLightEntity.cpp" />
     <ClCompile Include="Library\RenderingLibrary.cpp" />
     <ClCompile Include="Manager\InputManager.cpp" />

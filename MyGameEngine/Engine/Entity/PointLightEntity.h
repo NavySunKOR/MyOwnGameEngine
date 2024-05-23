@@ -5,12 +5,12 @@
 class MPointLightEntity : MLightEntity
 {
 public:
-	virtual FLocalLightData GetLocalLightData() const;
+	virtual FLocalLightData getLocalLightData() const override;
 
 public
 	__forceinline void SetRadius(float radius) { m_radius = radius; };
 	__forceinline float GetRadius() const { return m_radius; };
 
-private:
+protected:
 	float m_radius = 1.f;
 };

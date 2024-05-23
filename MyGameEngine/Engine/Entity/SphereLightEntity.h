@@ -1,2 +1,10 @@
 #pragma once
-#include "LightEntity.h"
+#include "PointLightEntity.h"
+
+class MSphereLightEntity : MPointLightEntity
+{
+	/*
+public:
+	virtual FLocalLightData getLocalLightData() const;*/
+
+};

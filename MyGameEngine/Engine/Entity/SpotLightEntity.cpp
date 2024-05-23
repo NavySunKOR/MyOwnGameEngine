@@ -1,8 +1,8 @@
 #include "SpotLightEntity.h"
 
-FLocalLightData MSpotLightEntity::GetLocalLightData() const
+FLocalLightData MSpotLightEntity::getLocalLightData() const
 {
-    FLocalLightData Data = MLightEntity::GetLocalLightData();
+    FLocalLightData Data = MLightEntity::getLocalLightData();
     Data.m_falloffStart = m_falloffStart;
     Data.m_falloffEnd = m_falloffEnd;
     

@@ -5,7 +5,7 @@
 class MDirectionalLightEntity : MLightEntity
 {
 public:
-	virtual FLocalLightData GetLocalLightData() const;
+	virtual FLocalLightData getLocalLightData() const;
 
 
 };

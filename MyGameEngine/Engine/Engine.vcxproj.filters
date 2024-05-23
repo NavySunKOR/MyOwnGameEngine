@@ -84,18 +84,6 @@
     <ClInclude Include="Application\Window.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="DirectionalLightEntity.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="PointLightEntity.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="SpotLightEntity.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="SphereLightEntity.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="Entity\PointLightEntity.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -174,6 +162,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Entity\SpotLightEntity.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity\PointLightEntity.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

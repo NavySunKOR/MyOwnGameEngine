@@ -5,7 +5,7 @@
 class MSpotLightEntity : MLightEntity
 {
 public:
-	virtual FLocalLightData GetLocalLightData() const override;
+	virtual FLocalLightData getLocalLightData() const override;
 
 public:
 	__forceinline void SetFalloffStart(float falloffStart) { m_falloffStart = falloffStart; };

@@ -1,6 +1,6 @@
 #include "LightEntity.h"
 
-FLocalLightData MLightEntity::GetLocalLightData() const
+FLocalLightData MLightEntity::getLocalLightData() const
 {
     FLocalLightData Data;
     Data.m_intensity = m_intensity;

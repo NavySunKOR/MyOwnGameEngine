@@ -36,3 +36,19 @@ struct FAreaLightData
 {
 
 };
+
+
+struct FVertexBufferDesc
+{
+
+};
+
+struct FIndexBufferDesc
+{
+
+};
+
+struct FConstantBufferDesc
+{
+
+};

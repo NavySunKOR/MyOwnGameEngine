@@ -12,7 +12,7 @@ public:
 	__forceinline float getIntensity() const { return m_intensity; }
 	__forceinline void setIntensity(float pIntensity) { m_intensity = pIntensity; }
 	
-	virtual FLocalLightData GetLocalLightData() const;
+	virtual FLocalLightData getLocalLightData() const;
 	
 private:
 	Vector3 m_color = Vector3(1, 1, 1);
