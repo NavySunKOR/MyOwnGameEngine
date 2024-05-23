@@ -148,6 +148,8 @@
     <ClInclude Include="Renderer\PipelineStateObject.h" />
     <ClInclude Include="Renderer\RenderModule.h" />
     <ClInclude Include="Renderer\VertexBuffer.h" />
+    <ClInclude Include="Resource\Material\MaterialResource.h" />
+    <ClInclude Include="Resource\Mesh\MeshResource.h" />
     <ClInclude Include="Resource\Resource.h" />
     <ClInclude Include="Resource\Texture\DepthStencilTexture.h" />
     <ClInclude Include="Resource\Texture\RenderTargetTexture.h" />
@@ -173,6 +175,7 @@
     <ClCompile Include="Renderer\PipelineStateObject.cpp" />
     <ClCompile Include="Renderer\RenderModule.cpp" />
     <ClCompile Include="Renderer\VertexBuffer.cpp" />
+    <ClCompile Include="Resource\Mesh\MeshResource.cpp" />
     <ClCompile Include="Resource\Resource.cpp" />
     <ClCompile Include="Resource\Texture\DepthStencilTexture.cpp" />
     <ClCompile Include="Resource\Texture\RenderTargetTexture.cpp" />
