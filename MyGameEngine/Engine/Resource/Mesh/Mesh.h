@@ -1,7 +1,7 @@
 #pragma once
 #include "../Resource.h"
 
-class MMeshResource : MResource
+class MMesh : MResource
 {
 
 public:

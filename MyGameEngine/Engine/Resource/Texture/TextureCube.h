@@ -1,17 +1,17 @@
 #pragma once
-#include "Texture2D.h"
+#include "Texture.h"
 
-struct TextureCubeDesc
-{
 
-};
-
-class MTextureCube : public MTexture2D
+class MTextureCube : public MTexture
 {
 public:
 	MTextureCube(const wchar_t* filePath);
-	MTextureCube(const TextureCubeDesc texture2DDesc);
+	//TODO: 나중에 uint8* 로 이용한 다이나믹 DDS 생성 로직 만들기
 
 protected:
+	MTextureCube();
+
+protected:
+	ComPtr<ID3D11Resource> m_resource;
 
 };

@@ -1,11 +1,11 @@
 #pragma once
 #include "../Resource.h"
 
-class MMaterialResource : public MResource
+class MMaterial : public MResource
 {
 public:
-	MMaterialResource(const wchar_t* full_path, CXResourceManager* manager);
-	MMaterialResource(const  CXMaterialPtr& material, CXResourceManager* manager);
+	MMaterial(const wchar_t* full_path, CXResourceManager* manager);
+	MMaterial(const  CXMaterialPtr& material, CXResourceManager* manager);
 
 	void addTexture(const  CXTexturePtr& texture);
 	void removeTexture(unsigned int index);
