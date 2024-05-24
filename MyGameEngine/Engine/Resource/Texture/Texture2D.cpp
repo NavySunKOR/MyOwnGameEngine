@@ -52,7 +52,7 @@ MTexture2D::MTexture2D(const wchar_t* filePath) : MTexture(filePath)
 
 }
 
-MTexture2D::MTexture2D(const Texture2DDesc texture2DDesc) : MTexture(nullptr) // 동적 생성은 파일 명칭이 필요 없다. 추 후에 저장 로직에서나 추가하도록 하자.
+MTexture2D::MTexture2D(const FTexture2DDesc texture2DDesc) : MTexture(nullptr) // 동적 생성은 파일 명칭이 필요 없다. 추 후에 저장 로직에서나 추가하도록 하자.
 {
     D3D11_TEXTURE2D_DESC txtDesc;
     ZeroMemory(&txtDesc, sizeof(txtDesc));

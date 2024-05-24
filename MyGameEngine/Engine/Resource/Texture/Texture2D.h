@@ -9,7 +9,7 @@ class MTexture2D : public MTexture
 {
 public:
 	MTexture2D(const wchar_t* filePath);
-	MTexture2D(const Texture2DDesc texture2DDesc);
+	MTexture2D(const FTexture2DDesc texture2DDesc);
 
 protected:
 	MTexture2D() {}

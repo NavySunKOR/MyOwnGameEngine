@@ -53,7 +53,7 @@ struct FConstantBufferDesc
 };
 
 
-struct Texture2DDesc
+struct FTexture2DDesc
 {
 public:
 	UINT m_width = 0;
@@ -69,7 +69,7 @@ public:
 
 
 
-struct TextureCubeDesc
+struct FTextureCubeDesc
 {
 public:
 	UINT m_maxSize = 0;
@@ -85,10 +85,17 @@ public:
 
 };
 
-struct RenderTargetViewDesc
+struct FRenderTargetViewDesc
 {
 public:
 	DXGI_FORMAT m_format = DXGI_FORMAT_R32G32B32A32_FLOAT;
 	D3D11_RTV_DIMENSION m_RTVDimension = D3D11_RTV_DIMENSION_TEXTURE2D;
 	UINT m_mipSlice = 0;
+};
+
+struct FVertex
+{
+	Vector3 m_position;
+	Vector3 m_normal;
+	Vector2 m_texCoord;
 };
