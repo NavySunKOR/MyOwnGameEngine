@@ -99,3 +99,10 @@ struct FVertex
 	Vector3 m_normal;
 	Vector2 m_texCoord;
 };
+
+struct FMaterialSlot
+{
+	size_t startIndex = 0;
+	size_t numIndices = 0;
+	size_t materialID = 0;
+};

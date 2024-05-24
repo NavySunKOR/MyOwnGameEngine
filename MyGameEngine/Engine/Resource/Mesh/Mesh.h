@@ -1,32 +1,37 @@
 #pragma once
 #include "../Resource.h"
+#include <memory>
+#include <vector>
+
+class MVertexBuffer;
+class MIndexBuffer;
 
 class MMesh : MResource
 {
 
 public:
-	CXMesh(const wchar_t* full_path, CXResourceManager* manager);
-	CXMesh(CXVertexMesh* vertex_list_data, unsigned int vertex_list_size,
-		unsigned int* index_list_data, unsigned int index_list_size,
-		CXMaterialSlot* material_slot_list, unsigned int material_slot_list_size, CXResourceManager* manager);
-	const  CXVertexBufferPtr& getVertexBuffer();
-	const  CXIndexBufferPtr& getIndexBuffer();
+	MMesh(const wchar_t* full_path);
+	MMesh(FVertex* vertices, unsigned int verticesCount,
+		unsigned int* indices, unsigned int indicesCount,
+		CXMaterialSlot* materials, unsigned int materialCounts);
+	const  MVertexBuffer& getVertexBuffer();
+	const  MIndexBuffer& getIndexBuffer();
 
 	const  CXMaterialSlot& getMaterialSlot(unsigned int slot);
 	size_t getNumMaterialSlots();
 
-	CXVec3 getMaxCorner();
-	CXVec3 getMinCorner();
+	Vector3 getMaxCorner();
+	Vector3 getMinCorner();
 private:
 	void computeTangents(
-		const  CXVec3& v0, const  CXVec3& v1, const  CXVec3& v2,
-		const  CXVec2& t0, const  CXVec2& t1, const  CXVec2& t2,
-		CXVec3& tangent, CXVec3& binormal);
+		const  Vector3& v0, const  Vector3& v1, const  Vector3& v2,
+		const  Vector3& t0, const  Vector3& t1, const  Vector3& t2,
+		Vector3& tangent, Vector3& binormal);
 private:
-	CXVertexBufferPtr m_vertex_buffer;
-	CXIndexBufferPtr m_index_buffer;
+	std::shared_ptr<MVertexBuffer> m_vertexBuffer;
+	std::shared_ptr<MIndexBuffer> m_indexBuffer;
 	std::vector<CXMaterialSlot> m_mat_slots;
 
-	CXVec3 m_maxCorner;
-	CXVec3 m_minCorner = CXVec3(10000, 10000, 10000);
+	Vector3 m_maxCorner;
+	Vector3 m_minCorner = Vector3(10000, 10000, 10000);
 };
