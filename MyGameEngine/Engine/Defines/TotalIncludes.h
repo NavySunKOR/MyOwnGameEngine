@@ -45,6 +45,68 @@ enum class EVolumetricLightType
 	CUBE
 };
 
+enum class  EKey
+{
+	Escape = 0,
+	Shift,
+	Space,
+	A,
+	B,
+	C,
+	D,
+	E,
+	F,
+	G,
+	H,
+	I,
+	J,
+	K,
+	L,
+	M,
+	N,
+	O,
+	P,
+	Q,
+	R,
+	S,
+	T,
+	U,
+	V,
+	W,
+	X,
+	Y,
+	Z,
+	N0,
+	N1,
+	N2,
+	N3,
+	N4,
+	N5,
+	N6,
+	N7,
+	N8,
+	N9,
+	F1,
+	F2,
+	F3,
+	F4,
+	F5,
+	F6,
+	F7,
+	F8,
+	F9,
+	F10,
+	F11,
+	F12,
+};
+
+enum class EMouseButton
+{
+	Left = 0,
+	Middle,
+	Right
+};
+
 /*
 	로컬 라이트. 특정 볼륨을 가진 영역이 아닌 라이트의 데이터(예 : DirectionalLight , Point, SpotLight 같은것)
 	언리얼에서 두개를 구분하길래 일단 구분해놓았다.

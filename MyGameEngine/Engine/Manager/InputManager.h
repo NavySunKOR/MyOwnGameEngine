@@ -1,23 +1,25 @@
 #pragma once
 #include "../Defines/TotalIncludes.h"
 
+
 class  MInputManager
 {
 public:
 	MInputManager();
 
-	virtual bool isKeyDown(const  CXKey& key);
-	virtual bool isKeyUp(const  CXKey& key);
+	bool isKeyDown(const  EKey& key);
+	bool isKeyUp(const  EKey& key);
 
-	virtual bool isMouseDown(const  CXMouseButton& button);
-	virtual bool isMouseUp(const  CXMouseButton& button);
+	bool isMouseDown(const  EMouseButton& button);
+	bool isMouseUp(const  EMouseButton& button);
 
-	virtual f32 getMouseXAxis();
-	virtual f32 getMouseYAxis();
+	FORCEINLINE float getMouseXAxis() const {
+		return m_deltaMouse.x;
+	};
+	FORCEINLINE float getMouseYAxis() const {
+		return m_deltaMouse.y;
+	};
 
-	virtual void enablePlayMode(bool enable);
-
-	void setScreenArea(const  CXRect& area);
 	void update();
 
 private:
@@ -26,9 +28,9 @@ private:
 	short m_keys_state_res[256] = {};
 
 	bool m_playEnable = false;
-	CXVec2 m_old_mouse_pos;
 	bool m_first_time = true;
-	CXRect m_screenArea;
-	CXVec2 m_deltaMouse;
+
+	Vector2 m_old_mouse_pos;
+	Vector2 m_deltaMouse;
 	int states_index = 0;
 };
