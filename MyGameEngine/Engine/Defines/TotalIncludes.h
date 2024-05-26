@@ -1,7 +1,52 @@
 #pragma once
-#include "EssentialGraphicIncludes.h"
+#include <d3d11.h>
+#include <wrl.h>
+#include <d3dcompiler.h>
+#include <directxtk/SimpleMath.h>
+#include <directxtk/DDSTextureLoader.h> 
+#include <directxtk/WICTextureLoader.h>
+#include <memory>
+
+//멀티플랫폼 사용을 위해서는 방식을 변경하여야하지만 지금은 Direct X 하나만 다룬다는 전제 조건으로 간다. 멀티플랫폼이 어쩌구 저쩌구 하면 돌아가는 엔진조차 못만듬.
+using namespace DirectX;
+using namespace DirectX::SimpleMath;
+
+#define FORCEINLINE __forceinline
+
+typedef std::shared_ptr<class MMesh> MMeshPtr;
+typedef std::shared_ptr<class MTexture2D> MTexture2DPtr;
+typedef std::shared_ptr<class MTextureCube> MTextureCubePtr;
+typedef std::shared_ptr<class MRenderTargetTexture> MRenderTargetTexturePtr;
+typedef std::shared_ptr<class MDepthStencilTexture> MDepthStencilTexturePtr;
+typedef std::shared_ptr<class MMaterial> MMaterialPtr;
+typedef std::shared_ptr<class MVertexBuffer> MVertexBufferPtr;
+typedef std::shared_ptr<class MIndexBuffer> MIndexBufferPtr;
+typedef std::shared_ptr<class MConstantBuffer> MConstantBufferPtr;
+
+
+
+enum class EProjectionMode
+{
+	PERSPECTIVE = 0,
+	ORTHOGRAPHIC
+};
+
+enum class ELightType
+{
+	DIRECTIONAL,
+	POINT,
+	SPOT,
+	RECT
+};
+
+enum class EVolumetricLightType
+{
+	SPHERE,
+	CUBE
+};
+
 /*
-	로컬 라이트. 특정 볼륨을 가진 영역이 아닌 라이트의 데이터(예 : DirectionalLight , Point, SpotLight 같은것) 
+	로컬 라이트. 특정 볼륨을 가진 영역이 아닌 라이트의 데이터(예 : DirectionalLight , Point, SpotLight 같은것)
 	언리얼에서 두개를 구분하길래 일단 구분해놓았다.
 */
 struct FLocalLightData
@@ -60,7 +105,7 @@ public:
 	UINT m_height = 0;
 	UINT m_mipLevels = 0;
 	DXGI_FORMAT m_format = DXGI_FORMAT_R32G32B32A32_FLOAT;
-	UINT m_sampleCount = 1 ;
+	UINT m_sampleCount = 1;
 	D3D11_USAGE m_usage = D3D11_USAGE_DEFAULT;
 	UINT m_bindFlags = D3D11_BIND_SHADER_RESOURCE;
 	UINT m_miscFlags = 0;

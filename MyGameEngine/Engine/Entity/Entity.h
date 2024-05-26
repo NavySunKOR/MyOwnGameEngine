@@ -1,6 +1,5 @@
 #pragma once
-#include "../Defines/Enums.h"
-#include "../Defines/Structs.h"
+#include "../Defines/TotalIncludes.h"
 
 class MGameApplication;
 

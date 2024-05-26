@@ -1,9 +1,6 @@
 #pragma once
 
-#include "../Defines/Enums.h"
-#include "../Defines/Structs.h"
-#include <d3d11.h>
-#include <wrl.h>
+#include "../Defines/TotalIncludes.h"
 
 class MVertexBuffer
 {

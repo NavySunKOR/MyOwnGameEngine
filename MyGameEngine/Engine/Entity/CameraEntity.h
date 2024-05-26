@@ -1,6 +1,6 @@
 #pragma once
 #include "Entity.h"
-#include "../Defines/Enums.h"
+#include "../Defines/TotalIncludes.h"
 
 
 class  MCameraEntity : public  MEntity
@@ -9,29 +9,53 @@ public:
 	MCameraEntity();
 	virtual ~MCameraEntity();
 
-	void setNearPlane(float farPlane);
-	void setFarPlane(float farPlane);
-	void setScreenArea(const  CXRect& screen);
-	void setFOV(float farPlane);
-	void setProjectionMode(float farPlane);
+	FORCEINLINE void setNearPlane(float nearPlane) {
+		m_nearPlane = nearPlane;
+	};
+	FORCEINLINE void setFarPlane(float farPlane) {
+		m_farPlane = farPlane;
+	};
+	FORCEINLINE void setScreenArea(const  DirectX::SimpleMath::Rectangle& screen) {
+		m_screenArea = screen;
+	};
+	FORCEINLINE void setFOV(float fov) {
+		m_fieldOfView = fov;
+	};
+	FORCEINLINE void setProjectionMode(EProjectionMode projectionMode) {
+		m_ProjectionMode = projectionMode;
+	};
 
-	CXMat4 getViewMatrix(Matrix& view);
-	CXMat4 getProjectionMatrix(Matrix& proj);
+	FORCEINLINE Matrix getViewMatrix() const {
+		return m_view;
+	};
+	FORCEINLINE Matrix getProjectionMatrix() const {
+		return m_projection;
+	};
 
-	float getNearPlane() const;
-	float getFarPlane() const;
-	CXRect getScreenArea() const;
-	float getFOV() const;
-	EProjectionMode getProjectionMode() const;
+	FORCEINLINE float getNearPlane() const {
+		return m_nearPlane;
+	};
+	FORCEINLINE float getFarPlane() const {
+		return m_farPlane;
+	};
+	FORCEINLINE DirectX::SimpleMath::Rectangle getScreenArea() const {
+		return m_screenArea;
+	};
+	FORCEINLINE float getFOV() const {
+		return m_fieldOfView;
+	};
+	FORCEINLINE EProjectionMode getProjectionMode() const {
+		return m_ProjectionMode;
+	};
 
 private:
-	CXMat4 m_view;
-	CXMat4 m_projection;
+	Matrix m_view;
+	Matrix m_projection;
 
 	float m_nearPlane = 0.1f;
 	float m_farPlane = 100.0f;
 	float m_fieldOfView = 90.0f;
-	CXRect m_screenArea;
+	DirectX::SimpleMath::Rectangle m_screenArea;
 
 	EProjectionMode m_ProjectionMode = EProjectionMode::PERSPECTIVE;
 };

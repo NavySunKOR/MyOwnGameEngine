@@ -1,8 +1,6 @@
 #pragma once
 #include <string>
-#include "../Defines/Structs.h"
-#include "../Defines/Enums.h"
-
+#include "../Defines/TotalIncludes.h"
 /*
 	filePath는 파일로 로드하는 경우 사용함
 */

@@ -1,7 +1,5 @@
 #pragma once
 #include "Entity.h"
-#include "../Defines/Structs.h"
-#include "../Defines/Enums.h"
 
 class MLightEntity : MEntity
 {
