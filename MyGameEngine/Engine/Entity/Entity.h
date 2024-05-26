@@ -1,5 +1,6 @@
 #pragma once
-
+#include "../Defines/Enums.h"
+#include "../Defines/Structs.h"
 
 class MGameApplication;
 
@@ -11,14 +12,14 @@ public:
 
 public:
 	size_t getId();
-	void getWorldMatrix(Mat4& world);
+	void getWorldMatrix(Matrix& world);
 	void setPosition(const  Vector3& position);
 	void setRotation(const  Vector3& rotation);
 	void setScale(const  Vector3& scale);
 
-	Vector3 getPosition();
-	Vector3 getRotation();
-	Vector3 getScale();
+	Vector3 getPosition() const;
+	Vector3 getRotation() const;
+	Vector3 getScale() const;
 
 	MGameApplication* getGame() { return m_game; };
 
