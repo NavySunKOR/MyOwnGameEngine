@@ -129,10 +129,8 @@
   <ItemGroup>
     <ClInclude Include="Application\GameApplication.h" />
     <ClInclude Include="Application\Window.h" />
-    <ClInclude Include="Defines\Enums.h" />
-    <ClInclude Include="Defines\EssentialGraphicIncludes.h" />
     <ClInclude Include="Defines\PipelineStateDefines.h" />
-    <ClInclude Include="Defines\Structs.h" />
+    <ClInclude Include="Defines\TotalIncludes.h" />
     <ClInclude Include="Entity\CameraEntity.h" />
     <ClInclude Include="Entity\DirectionalLightEntity.h" />
     <ClInclude Include="Entity\Entity.h" />
@@ -163,6 +161,7 @@
     <ClCompile Include="Application\main.cpp" />
     <ClCompile Include="Application\Window.cpp" />
     <ClCompile Include="Entity\CameraEntity.cpp" />
+    <ClCompile Include="Entity\DirectionalLightEntity.cpp" />
     <ClCompile Include="Entity\Entity.cpp" />
     <ClCompile Include="Entity\LightEntity.cpp" />
     <ClCompile Include="Entity\MeshEntity.cpp" />

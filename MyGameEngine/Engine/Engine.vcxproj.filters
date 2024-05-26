@@ -27,9 +27,6 @@
     <ClInclude Include="Defines\PipelineStateDefines.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Defines\Enums.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="Resource\Texture\Texture2D.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -72,9 +69,6 @@
     <ClInclude Include="Resource\Texture\RenderTargetTexture.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Defines\Structs.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="Resource\Texture\TextureCube.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -96,10 +90,13 @@
     <ClInclude Include="Entity\DirectionalLightEntity.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Resource\Mesh\MeshResource.h">
+    <ClInclude Include="Resource\Material\Material.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Resource\Material\MaterialResource.h">
+    <ClInclude Include="Resource\Mesh\Mesh.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Defines\TotalIncludes.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
@@ -173,7 +170,10 @@
     <ClCompile Include="Entity\PointLightEntity.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Resource\Mesh\MeshResource.cpp">
+    <ClCompile Include="Resource\Mesh\Mesh.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity\DirectionalLightEntity.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
