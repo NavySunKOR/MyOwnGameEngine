@@ -10,7 +10,7 @@ class MResource
 public:
 	MResource(const wchar_t* filePath);
 	virtual ~MResource();
-	__forceinline std::wstring getFilePath() const {
+	FORCEINLINE std::wstring getFilePath() const {
 		return m_FilePath;
 	};
 

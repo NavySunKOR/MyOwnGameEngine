@@ -4,11 +4,11 @@
 class MLightEntity : MEntity
 {
 public:
-	__forceinline void setColor(const  Vector3& color) { m_color = color; };
-	__forceinline Vector3 getColor() { return m_color; };
+	FORCEINLINE void setColor(const  Vector3& color) { m_color = color; };
+	FORCEINLINE Vector3 getColor() { return m_color; };
 
-	__forceinline float getIntensity() const { return m_intensity; }
-	__forceinline void setIntensity(float pIntensity) { m_intensity = pIntensity; }
+	FORCEINLINE float getIntensity() const { return m_intensity; }
+	FORCEINLINE void setIntensity(float pIntensity) { m_intensity = pIntensity; }
 	
 	virtual FLocalLightData getLocalLightData() const;
 	

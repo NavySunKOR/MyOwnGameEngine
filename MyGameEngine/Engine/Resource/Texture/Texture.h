@@ -8,7 +8,7 @@ class MTexture : public MResource
 public:
 	MTexture(const wchar_t* filePath);
 
-	__forceinline void ChangeSamplerState(ComPtr<ID3D11SamplerState> inSamplerState) {
+	FORCEINLINE void ChangeSamplerState(ComPtr<ID3D11SamplerState> inSamplerState) {
 		m_samplerState = inSamplerState;
 	};
 

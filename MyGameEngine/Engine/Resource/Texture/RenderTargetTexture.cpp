@@ -13,8 +13,7 @@ MRenderTargetTexture::MRenderTargetTexture(const FTexture2DDesc& texture2DDesc, 
     viewDesc.Texture2D.MipSlice = 0;
 
     //TODO: D3D11Context받아와서 실행
-    //device->CreateRenderTargetView(m_texture2D.Get(), &viewDesc,
-        m_RTV.GetAddressOf());
+    //device->CreateRenderTargetView(m_texture2D.Get(), &viewDesc, m_RTV.GetAddressOf());
 
     //만약에 쉐이더 리소스 뷰 다시 만들어야 된다면 다시 설정할것.
 }

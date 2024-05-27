@@ -5,7 +5,7 @@
 class  MIndexBuffer
 {
 public:
-	MIndexBuffer(const MIndexBuffer& desc);
+	MIndexBuffer(const FIndexBufferDesc& desc);
 	int getIndicesListSize();
 	void* getBuffer();
 private:
