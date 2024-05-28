@@ -10,6 +10,7 @@ public:
 	void resize(const DirectX::SimpleMath::Rectangle& inSize);
 	bool present(bool vsync);
 
+	FORCEINLINE Microsoft::WRL::ComPtr <IDXGISwapChain> getSwapChain() { return m_swapChain; };
 	FORCEINLINE MRenderTargetTexturePtr getRenderTargetView() { return m_rtv; };
 	FORCEINLINE MDepthStencilTexturePtr getDepthStencilView() { return m_dsv; };
 

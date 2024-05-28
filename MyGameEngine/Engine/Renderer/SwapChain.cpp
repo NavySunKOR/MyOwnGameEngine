@@ -5,18 +5,28 @@
 MSwapChain::MSwapChain(const FSwapChainDesc& swapDesc)
 {
 	DXGI_SWAP_CHAIN_DESC d3d11Desc = {};
-	d3d11Desc.BufferCount = 1;
+	d3d11Desc.BufferCount = 2;
 	d3d11Desc.BufferDesc.Width = (swapDesc.m_rectSize.width > 0) ? swapDesc.m_rectSize.width : 1;
 	d3d11Desc.BufferDesc.Height = (swapDesc.m_rectSize.height > 0) ? swapDesc.m_rectSize.height : 1;
 	d3d11Desc.BufferDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
-	d3d11Desc.BufferDesc.RefreshRate.Numerator = 60;
+	d3d11Desc.BufferDesc.RefreshRate.Numerator = 120;
 	d3d11Desc.BufferDesc.RefreshRate.Denominator = 1;
-	d3d11Desc.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;
-	d3d11Desc.OutputWindow = (HWND)swapDesc.windowHandle;
-	d3d11Desc.SampleDesc.Count = 1;
-	d3d11Desc.SampleDesc.Quality = 0;
+	d3d11Desc.BufferUsage = DXGI_USAGE_SHADER_INPUT | DXGI_USAGE_RENDER_TARGET_OUTPUT;
+	d3d11Desc.OutputWindow = (HWND)swapDesc.m_windowHandle;
+
+	if (swapDesc.m_MSAAApplyLevel > 0)
+	{
+		d3d11Desc.SampleDesc.Count = 4;
+		d3d11Desc.SampleDesc.Quality = swapDesc.m_MSAAApplyLevel - 1;
+	}
+	else
+	{
+		d3d11Desc.SampleDesc.Count = 1;
+		d3d11Desc.SampleDesc.Quality = 0;
+	}
 	d3d11Desc.Flags = DXGI_SWAP_CHAIN_FLAG_ALLOW_MODE_SWITCH;
 	d3d11Desc.Windowed = TRUE;
+	d3d11Desc.SwapEffect = DXGI_SWAP_EFFECT_DISCARD;
 
 	/*HRESULT hr = m_system->m_dxgiFactory->CreateSwapChain(device.Get(), &d3d11Desc, &m_swap_chain);
 
@@ -47,7 +57,7 @@ bool MSwapChain::present(bool vsync)
 
 void MSwapChain::reloadBuffer(UINT pWidth, UINT pHeight)
 {
-	auto device = m_system->m_d3dDevice;
+	//auto device = m_system->m_d3dDevice;
 
 	//Get the back buffer color and create its render target view
 	//--------------------------------

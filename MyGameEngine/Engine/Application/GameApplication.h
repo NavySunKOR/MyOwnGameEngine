@@ -1,4 +1,5 @@
 #pragma once
+#include "../Defines/TotalIncludes.h"
 
 class MGameApplication
 {
@@ -23,15 +24,17 @@ private:
 
 
 private:
-	/*std::unique_ptr<CXInputManager> m_inputManager;
-	std::unique_ptr<CXGraphicsEngine> m_graphicsEngine;
-	std::unique_ptr<CXDisplay> m_display;
-	std::unique_ptr<CXResourceManager> m_resourceManager;
-	std::map<size_t, std::map<CXEntity*, std::unique_ptr<CXEntity>>> m_entities;
-	std::set<CXEntity*> m_entitiesToDestroy;
+	std::unique_ptr<class MInputManager> m_inputManager;
+	std::unique_ptr<class MResourceManager> m_resourceManager;
+	std::unique_ptr<class MRenderModule> m_renderModule;
+	std::unique_ptr<class MWindow> m_windows;
+	std::map<size_t, std::map<class MEntity*, std::unique_ptr<MEntity>>> m_entities;
+	std::set<MEntity*> m_entitiesToDestroy;
 
-	friend class  CXEntity;
-	friend class  CXDisplay;
-	*/
+	friend class MEntity;
+	friend class MInputManager;
 
 };
+
+
+MGameApplication* GameApp = nullptr;

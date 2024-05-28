@@ -7,64 +7,74 @@ class MRenderModule
 
 public:
 	MRenderModule();
+
 public:
-	MSwapChainPtr createSwapChain(const FSwapChainDesc& desc);
-	MVertexBufferPtr createVertexBuffer(const FVertexBufferDesc& desc);
-	MIndexBufferPtr createIndexBuffer(const FIndexBufferDesc& desc);
-	MConstantBufferPtr createConstantBuffer(const FConstantBufferDesc& desc);
-	CXShaderPtr createShader(const CXShaderDesc& desc);
-	CXTexture2DPtr createTexture2D(const CXTexture2DDesc& desc);
-	CXTexture2DPtr createTexture2D(const wchar_t* path);
-public:
-	void clearColor(const  CXSwapChainPtr& swap_chain, const CXVec4& color);
-	void clearDepthStencil(const  CXSwapChainPtr& swap_chain);
+	virtual void init();
+	virtual void render();
 
-	void clearColor(const  CXTexture2DPtr& render_target, const CXVec4& color);
-	void clearDepthStencil(const  CXTexture2DPtr& depth_stencil);
+	FORCEINLINE ComPtr<ID3D11Device>& GetDevice() {
+		return m_device;
+	};
 
-	void setRenderTarget(const  CXTexture2DPtr& render_target, const  CXTexture2DPtr& depth_stencil);
+	FORCEINLINE ComPtr<ID3D11DeviceContext>& GetContext() {
+		return m_context;
+	};
 
-	void setVertexBuffer(const  CXVertexBufferPtr& buffer);
-	void setIndexBuffer(const  CXIndexBufferPtr& buffer);
+	FORCEINLINE MSwapChainPtr GetSwapChain() {
+		return m_swapChain;
+	};
 
+	FORCEINLINE MRenderTargetTexturePtr GetRenderTargetView() {
+		return m_renderTargetView;
+	};
 
-	void drawTriangleList(ui32 vertex_count, ui32 start_vertex_index);
-	void drawIndexedTriangleList(ui32 index_count, ui32 start_vertex_index, ui32 start_index_location);
-	void drawTriangleStrip(ui32 vertex_count, ui32 start_vertex_index);
-
-	void setViewportSize(ui32 width, ui32 height);
-	void setShader(const  CXShaderPtr& shader);
-	void setConstantBuffer(const  CXConstantBufferPtr& buffer);
-	void setRasterizerState(bool cull_front);
-
-
-	void setTexture(const  CXTexturePtr* texture, unsigned int num_textures);
-	void setMaterial(const  CXMaterialPtr& material);
-	void drawMesh(const  CXMeshPtr& mesh, const std::vector<CXMaterialPtr>& list_materials);
-private:
-	void compilePrivateShaders();
-	void initRasterizerState();
+	FORCEINLINE D3D11_VIEWPORT& GetScreenViewport() {
+		return m_screenViewport;
+	};
 
 private:
-	Microsoft::WRL::ComPtr < ID3D11Device> m_d3dDevice;
-	Microsoft::WRL::ComPtr < IDXGIDevice> m_dxgiDevice;
-	Microsoft::WRL::ComPtr < IDXGIAdapter> m_dxgiAdapter;
-	Microsoft::WRL::ComPtr < IDXGIFactory> m_dxgiFactory;
-	Microsoft::WRL::ComPtr < ID3D11DeviceContext> m_immContext;
-private:
-	Microsoft::WRL::ComPtr <ID3D11RasterizerState> m_cullFrontState;
-	Microsoft::WRL::ComPtr <ID3D11RasterizerState> m_cullBackState;
+	bool InitDeviceAndContext();
+	bool InitSwapChain();
+	bool InitRasterizerState();
+	bool InitRenderTargetView();
+	bool InitDepthBuffer();
+	bool InitDepthStencil();
+	bool InitSampler();
+	void SetViewport();
 
-	unsigned char m_meshLayoutByteCode[1024];
-	size_t m_meshLayoutSize = 0;
+protected:
+	class MCameraEntity* m_mainCamera;
+	ComPtr<ID3D11Device> m_device; //디바이스
+	ComPtr<ID3D11DeviceContext> m_context; //컨텍스트 
+	D3D11_VIEWPORT m_screenViewport;
+
+	MSwapChainPtr m_swapChain;
+	MRenderTargetTexturePtr m_renderTargetView;
+	MDepthStencilTexturePtr m_depthStencilView;
+	ComPtr<ID3D11DepthStencilState> m_depthStencilState; //뎁스 스텐실 스테이트
+
+	//TODO: 오브젝트는 어떻게 할 지 고민 필요
+
+#pragma region DirectXProperties
+private:
+	UINT m_MSAAQuality;
+	D3D_DRIVER_TYPE m_DriverType;
+	UINT m_CreateDeviceFlags;
+
+	D3D_FEATURE_LEVEL m_FeatureLevels[2] = {
+		D3D_FEATURE_LEVEL_11_0, // 더 높은 버전이 먼저 오도록 설정
+		D3D_FEATURE_LEVEL_9_3 };
+
+	D3D_FEATURE_LEVEL m_UsingFeatureLevel;
+
+
+#pragma endregion
 
 private:
-	friend class  CXSwapChain;
-	friend class  CXVertexBuffer;
-	friend class  CXIndexBuffer;
-	friend class  CXConstantBuffer;
-	friend class  CXVertexShader;
-	friend class  CXPixelShader;
-	friend class  CXTexture2D;
-	friend class  CXShader;
+	friend class  MSwapChain;
+	friend class  MVertexBuffer;
+	friend class  MIndexBuffer;
+	friend class  MConstantBuffer;
+	friend class  MTexture2D;
+	friend class MCameraEntity;
 }

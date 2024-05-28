@@ -9,12 +9,14 @@
 #include <sstream>
 #include <iostream>
 #include <map>
+#include <set>
 #include <string>
 #include <stdexcept>
 
 //멀티플랫폼 사용을 위해서는 방식을 변경하여야하지만 지금은 Direct X 하나만 다룬다는 전제 조건으로 간다. 멀티플랫폼이 어쩌구 저쩌구 하면 돌아가는 엔진조차 못만듬.
 using namespace DirectX;
 using namespace DirectX::SimpleMath;
+using namespace Microsoft::WRL;
 
 #define FORCEINLINE __forceinline
 
@@ -28,7 +30,7 @@ typedef std::shared_ptr<class MVertexBuffer> MVertexBufferPtr;
 typedef std::shared_ptr<class MIndexBuffer> MIndexBufferPtr;
 typedef std::shared_ptr<class MConstantBuffer> MConstantBufferPtr;
 typedef std::shared_ptr<class MResource> MResourcePtr;
-typedef Microsoft::WRL::ComPtr <IDXGISwapChain> MSwapChainPtr;	
+typedef std::shared_ptr<class MSwapChain> MSwapChainPtr;
 
 
 
@@ -150,7 +152,6 @@ struct FAreaLightData
 
 };
 
-
 struct FVertexBufferDesc
 {
 public:
@@ -209,6 +210,7 @@ struct FSwapChainDesc
 {
 public:
 	void* m_windowHandle = nullptr;
+	UINT m_MSAAApplyLevel = 0;
 	DirectX::SimpleMath::Rectangle m_rectSize;
 };
 

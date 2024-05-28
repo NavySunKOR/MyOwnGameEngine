@@ -8,7 +8,7 @@ public:
 	MRenderTargetTexture(const FTexture2DDesc& texture2DDesc , const FRenderTargetViewDesc& renderTargetView);
 	MRenderTargetTexture(ComPtr<ID3D11Texture2D> backBuffer, const FRenderTargetViewDesc& renderTargetView);
 
-	FORCEINLINE ComPtr<ID3D11DepthStencilView> GetRTV() { return m_RTV; };
+	FORCEINLINE ComPtr<ID3D11RenderTargetView> GetRTV() { return m_RTV; };
 protected:
 	ComPtr<ID3D11RenderTargetView> m_RTV = nullptr;
 

@@ -146,6 +146,7 @@
     <ClInclude Include="Renderer\IndexBuffer.h" />
     <ClInclude Include="Renderer\PipelineStateObject.h" />
     <ClInclude Include="Renderer\RenderModule.h" />
+    <ClInclude Include="Renderer\SwapChain.h" />
     <ClInclude Include="Renderer\VertexBuffer.h" />
     <ClInclude Include="Resource\Material\Material.h" />
     <ClInclude Include="Resource\Mesh\Mesh.h" />
@@ -174,6 +175,7 @@
     <ClCompile Include="Renderer\IndexBuffer.cpp" />
     <ClCompile Include="Renderer\PipelineStateObject.cpp" />
     <ClCompile Include="Renderer\RenderModule.cpp" />
+    <ClCompile Include="Renderer\SwapChain.cpp" />
     <ClCompile Include="Renderer\VertexBuffer.cpp" />
     <ClCompile Include="Resource\Mesh\Mesh.cpp" />
     <ClCompile Include="Resource\Resource.cpp" />
