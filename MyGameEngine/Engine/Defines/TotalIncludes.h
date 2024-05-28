@@ -28,6 +28,7 @@ typedef std::shared_ptr<class MVertexBuffer> MVertexBufferPtr;
 typedef std::shared_ptr<class MIndexBuffer> MIndexBufferPtr;
 typedef std::shared_ptr<class MConstantBuffer> MConstantBufferPtr;
 typedef std::shared_ptr<class MResource> MResourcePtr;
+typedef Microsoft::WRL::ComPtr <IDXGISwapChain> MSwapChainPtr;	
 
 
 
@@ -202,6 +203,13 @@ public:
 
 	DirectX::DDS_ALPHA_MODE* m_ddsAlphaMode = nullptr;
 
+};
+
+struct FSwapChainDesc
+{
+public:
+	void* m_windowHandle = nullptr;
+	DirectX::SimpleMath::Rectangle m_rectSize;
 };
 
 struct FRenderTargetViewDesc

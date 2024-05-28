@@ -8,10 +8,10 @@ class MRenderModule
 public:
 	MRenderModule();
 public:
-	CXSwapChainPtr createSwapChain(const CXSwapChainDesc& desc);
-	CXVertexBufferPtr createVertexBuffer(const CXVertexBufferDesc& desc);
-	CXIndexBufferPtr createIndexBuffer(const CXIndexBufferDesc& desc);
-	CXConstantBufferPtr createConstantBuffer(const CXConstantBufferDesc& desc);
+	MSwapChainPtr createSwapChain(const FSwapChainDesc& desc);
+	MVertexBufferPtr createVertexBuffer(const FVertexBufferDesc& desc);
+	MIndexBufferPtr createIndexBuffer(const FIndexBufferDesc& desc);
+	MConstantBufferPtr createConstantBuffer(const FConstantBufferDesc& desc);
 	CXShaderPtr createShader(const CXShaderDesc& desc);
 	CXTexture2DPtr createTexture2D(const CXTexture2DDesc& desc);
 	CXTexture2DPtr createTexture2D(const wchar_t* path);
