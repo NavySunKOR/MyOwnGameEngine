@@ -1,4 +1,8 @@
 #include "RenderModule.h"
+#include "SwapChain.h"
+#include "../Resource/Texture/RenderTargetTexture.h"
+#include "../Resource/Texture/DepthStencilTexture.h"
+
 
 using namespace std;
 
@@ -9,7 +13,24 @@ MRenderModule::MRenderModule()
 
 void MRenderModule::init()
 {
+    if (!InitDeviceAndContext())
+        return;
 
+    if (!InitSwapChain())
+        return;
+
+    if (!InitRenderTargetView())
+        return;
+
+    if (!InitDepthBuffer())
+        return;
+
+    if (!InitDepthStencil())
+        return;
+
+    SetViewport();
+
+    m_IsInitialized = true;
 }
 
 void MRenderModule::render()
@@ -93,18 +114,47 @@ bool MRenderModule::InitSwapChain()
 	return false;
 }
 
-bool MRenderModule::InitRasterizerState()
-{
-	return false;
-}
-
 bool MRenderModule::InitRenderTargetView()
 {
-	return false;
+    if (m_renderTargetView->getRTV())
+        m_renderTargetView->getRTV().Reset();
+
+    ComPtr<ID3D11Texture2D> backBuffer;
+    m_swapChain->getSwapChain()->GetBuffer(0, IID_PPV_ARGS(backBuffer.GetAddressOf()));
+    if (backBuffer) {
+        m_renderTargetView = make_shared<MRenderTargetTexture>(backBuffer.Get());
+    }
+    else {
+        std::cout << "CreateRenderTargetView() failed." << std::endl;
+        return false;
+    }
+
+    return true;
 }
 
 bool MRenderModule::InitDepthBuffer()
 {
+    FTexture2DDesc texture2DDesc;
+
+    texture2DDesc.m_width = m_screenViewport.Width;
+    texture2DDesc.m_height = m_screenViewport.Height;
+    texture2DDesc.m_mipLevels = 1;
+    texture2DDesc.m_format = DXGI_FORMAT_D24_UNORM_S8_UINT;
+    if (m_MSAAQuality > 0) {
+        texture2DDesc.m_sampleCount = 4; // how many multisamples
+        texture2DDesc.m_sampleQuality = m_MSAAQuality - 1;
+    }
+    else {
+        texture2DDesc.m_sampleCount = 1; // how many multisamples
+        texture2DDesc.m_sampleQuality = 0;
+    }
+    texture2DDesc.m_usage = D3D11_USAGE_DEFAULT;
+    texture2DDesc.m_bindFlags = D3D11_BIND_DEPTH_STENCIL;
+    texture2DDesc.m_CPUAccessFlags = 0;
+    texture2DDesc.m_miscFlags = 0;
+    m_depthStencilView = make_shared<MDepthStencilTexture>(texture2DDesc);
+
+
 	return false;
 }
 
@@ -113,12 +163,14 @@ bool MRenderModule::InitDepthStencil()
 	return false;
 }
 
-bool MRenderModule::InitSampler()
-{
-	return false;
-}
-
 void MRenderModule::SetViewport()
 {
-
+    //if (m_swapChain)
+    //{
+    //    m_swapChain->ResizeBuffers(0, m_AppContext->GetScreenWidth(), m_AppContext->GetScreenHeight(), DXGI_FORMAT_UNKNOWN, 0);
+    //    InitRenderTargetView();
+    //    InitDepthBuffer();
+    //    InitDepthStencil();
+    //    SetViewport();
+    //}
 }

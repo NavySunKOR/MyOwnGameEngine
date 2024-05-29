@@ -1,10 +1,6 @@
 #pragma once
 #include "Texture2D.h"
 
-struct FDepthStencilTextureDesc
-{
-
-};
 
 class MDepthStencilTexture : public MTexture2D
 {

@@ -18,7 +18,31 @@ MRenderTargetTexture::MRenderTargetTexture(const FTexture2DDesc& texture2DDesc, 
     //만약에 쉐이더 리소스 뷰 다시 만들어야 된다면 다시 설정할것.
 }
 
-MRenderTargetTexture::MRenderTargetTexture(ComPtr<ID3D11Texture2D> backBuffer, const FRenderTargetViewDesc& renderTargetView)
+MRenderTargetTexture::MRenderTargetTexture(ComPtr<ID3D11Texture2D> backBuffer)
 {
 
+    /*
+    m_device->CreateRenderTargetView(backBuffer.Get(), nullptr, m_RTV);
+    
+    
+    D3D11_TEXTURE2D_DESC desc;
+    backBuffer->GetDesc(&desc);
+    desc.SampleDesc.Count = 1;
+    desc.SampleDesc.Quality = 0;
+    desc.BindFlags = D3D11_BIND_SHADER_RESOURCE;
+    desc.MiscFlags = 0;
+
+    if (FAILED(m_device->CreateTexture2D(&desc, nullptr,  m_texture2D.GetAddressOf())) {
+        cout << "Failed()" << endl;
+    }
+
+    HRESULT Res = m_device->CreateShaderResourceView(m_texture2D.Get(), nullptr, m_renderTargetResourceView.GetAddressOf());
+    if (FAILED(Res))
+    {
+        cout << "Failed CreateShaderResourceView()" << endl;
+    }
+    */
 }
+
+
+\

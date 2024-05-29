@@ -182,6 +182,7 @@ public:
 	UINT m_mipLevels = 0;
 	DXGI_FORMAT m_format = DXGI_FORMAT_R32G32B32A32_FLOAT;
 	UINT m_sampleCount = 1;
+	UINT m_sampleQuality = 1;
 	D3D11_USAGE m_usage = D3D11_USAGE_DEFAULT;
 	UINT m_bindFlags = D3D11_BIND_SHADER_RESOURCE;
 	UINT m_miscFlags = 0;

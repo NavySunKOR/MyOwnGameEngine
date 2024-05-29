@@ -42,7 +42,7 @@ void MSwapChain::setFullScreen(const bool isFullScreen)
 
 void MSwapChain::resize(const DirectX::SimpleMath::Rectangle& inSize)
 {
-	m_rtv->GetRTV().Reset();
+	m_rtv->getRTV().Reset();
 	m_dsv->GetDSV().Reset();
 
 	m_swapChain->ResizeBuffers(1, size.width, size.height, DXGI_FORMAT_R8G8B8A8_UNORM, 0);

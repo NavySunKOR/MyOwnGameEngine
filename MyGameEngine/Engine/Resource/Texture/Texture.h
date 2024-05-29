@@ -12,6 +12,9 @@ public:
 		m_samplerState = inSamplerState;
 	};
 
+	FORCEINLINE ComPtr<ID3D11ShaderResourceView> getShaderResView() { return m_shaderResView; };
+	FORCEINLINE ComPtr<ID3D11SamplerState> getSamplerState() { return m_samplerState; };
+
 protected:
 	MTexture() {}
 

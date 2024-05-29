@@ -35,12 +35,12 @@ public:
 private:
 	bool InitDeviceAndContext();
 	bool InitSwapChain();
-	bool InitRasterizerState();
 	bool InitRenderTargetView();
 	bool InitDepthBuffer();
 	bool InitDepthStencil();
-	bool InitSampler();
 	void SetViewport();
+
+	//샘플러랑 레스터라이저는 PSO로 제작.
 
 protected:
 	class MCameraEntity* m_mainCamera;
@@ -53,7 +53,7 @@ protected:
 	MDepthStencilTexturePtr m_depthStencilView;
 	ComPtr<ID3D11DepthStencilState> m_depthStencilState; //뎁스 스텐실 스테이트
 
-	//TODO: 오브젝트는 어떻게 할 지 고민 필요
+	bool m_IsInitialized = false;
 
 #pragma region DirectXProperties
 private:
